@@ -1,14 +1,29 @@
 #include "Span.hpp"
 
+Span::Span() : N(12000)
+{
+
+}
+
 Span::Span(unsigned int num) : N(num)
 {
 	if (Span::N > __INT_MAX__)
 		throwSpanSizeMaxLimit();
 }
 
+Span::Span(const Span &source)
+{
+	this->N = source.N;
+	this->_span = source._span;
+}
+
 Span &Span::operator=(const Span &source)
 {
-	(void)source;
+	if (this != &source)
+	{
+		this->N = source.N;
+		this->_span = source._span;
+	}
 	return (*this);
 }
 
@@ -72,8 +87,8 @@ unsigned int Span::longestSpan()
 	if (_span.empty() || _span.size() == 1)
 		throwInsufficientSpan();
 	unsigned int SpanLength = 
-		std::max_element(_span.begin(), _span.end()) -
-		std::min_element(_span.begin(), _span.end());
+		*std::max_element(_span.begin(), _span.end()) -
+		*std::min_element(_span.begin(), _span.end());
 	return (SpanLength);
 }
 
@@ -101,8 +116,8 @@ void Span::fillSpan()
 	for (unsigned int i = 0; i < N; i++)
 	{
 		const int value = generateRandomFormula();
-		std::cout << "Value of Push #" << i
-			<< ": " << value << std::endl;
+		// std::cout << "Value of Push #" << i
+		// 	<< ": " << value << std::endl;
 		this->_span.push_back(value);
 	}
 }

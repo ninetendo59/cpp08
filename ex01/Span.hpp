@@ -11,12 +11,11 @@ class Span
 		unsigned int N;
 		std::vector<int> _span;
 
-		// im not gonna use it but required to implement
+	public:
 		Span();
 		Span(const Span &source);
-		Span &operator=(const Span &source);
-	public:
 		Span(unsigned int N);
+		Span &operator=(const Span &source);
 		~Span();
 		void addNumber(int number);
 		unsigned int shortestSpan();
