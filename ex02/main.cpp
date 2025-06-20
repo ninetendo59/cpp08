@@ -19,7 +19,7 @@ int main()
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;
 	--it;
-
+	std::cout << "Test 3 (iteration test):"<< std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
@@ -27,6 +27,7 @@ int main()
 	}
 	std::stack<int> s(mstack);
 
+	std::cout << "Test 4 other type container"<< std::endl;
 	std::list<int> mlist;
 	mlist.push_back(5);
 	mlist.push_back(17);
@@ -34,5 +35,7 @@ int main()
 
 	for (std::list<int>::iterator it = mlist.begin(); it != mlist.end(); ++it)
 		std::cout << *it << std::endl;
+
+	//add more test after here
 	return 0;
 }
